@@ -75,7 +75,7 @@ export class EventBus extends ObservableBus<IEvent> implements IEventBus {
 
   private getEventName(event): string {
     const { constructor } = Object.getPrototypeOf(event);
-    return constructor.name as string;
+    return ('__event__' + constructor.name) as string;
   }
 
   protected registerSaga(saga: Saga) {

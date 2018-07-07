@@ -56,7 +56,7 @@ export class CommandBus extends ObservableBus<ICommand> implements ICommandBus {
 
   private getCommandName(command): string {
     const { constructor } = Object.getPrototypeOf(command);
-    return constructor.name as string;
+    return ('__command__' + constructor.name) as string;
   }
 
   private reflectCommandName(
